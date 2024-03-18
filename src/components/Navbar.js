@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
-import ReorderIcon from '@mui/icons-material/Reorder';
+import ReorderIcon from "@mui/icons-material/Reorder";
 
 const Navbar = () => {
+  const [showLinks, setShowLinks] = useState(false);
+  function click() {
+    setShowLinks(!showLinks);
+  }
   return (
     <div className="navbar">
-      <div className="leftSide">
+      <div className="leftSide" id={showLinks ? "open" : "close"}>
         <img src={logo} alt="logo" />
         <div className="hiddenLinks">
           <Link to="/">Home</Link>
@@ -21,8 +25,8 @@ const Navbar = () => {
         <Link to="/menu">Menu</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
-        <button>
-        <ReorderIcon />
+        <button onClick={() => click()}>
+          <ReorderIcon />
         </button>
       </div>
     </div>
